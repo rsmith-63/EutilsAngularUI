@@ -8,8 +8,8 @@
 
             <div class="form-group">
                 <div class="col-lg-3 col-md-4 col-xs-4">
-                    <select id="selectbasic" name="selectbasic" class="form-control" ng-model="dataBases"
-                            ng-options="o as o for o in options"> {{dataBases}}
+                   <select id="selectbasic" name="selectbasic" class="form-control" ng-model="selectedDb"
+                           ng-options="item for item in dataBases">
                     </select>
                 </div>
                 <div class="col-lg-3 col-md-4 col-xs-4">
