@@ -6,6 +6,7 @@
 angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi', function($scope, searchNcbi) {
 
     searchNcbi.getDataBases().query(function(response){
+            response.unshift("All DataBases");
             $scope.dataBases = response;
         },
         function(response){
