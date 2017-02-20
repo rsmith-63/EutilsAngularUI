@@ -13,7 +13,7 @@ angular.module('eutilsUI', ['ui.router', 'ngResource'])
 
                     'content': {
                         templateUrl : 'views/SearchForm.html',
-                        controller  : 'SearchController'
+                        controller  : 'searchController'
                     }
                 }
             });
