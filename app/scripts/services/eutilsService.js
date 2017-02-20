@@ -9,4 +9,9 @@ angular.module('eutilsUI')
         return $resource(`${baseURL}/dblist`);
     };
 
+}]).service('queryResults',['$resource', 'baseURL', function($resource, baseURL) {
+    this.getQueryResults = function(term){
+        return $resource(`${baseURL}/query?${term}`);
+    };
+
 }]);

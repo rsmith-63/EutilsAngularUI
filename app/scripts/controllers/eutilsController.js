@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi', function($scope, searchNcbi) {
+angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi', 'queryResults', function($scope, searchNcbi,queryResults) {
 
     searchNcbi.getDataBases().query(function(response){
             response.unshift("All DataBases");
@@ -12,4 +12,16 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi
         function(response){
             $scope.message = "Error: "+response.status + " " + response.statusText;
         });
+    $scope.searchDb = function(txt) {
+         console.log(txt);
+        queryResults.getQueryResults(txt).query(function(response){
+                console.log(response);
+            },
+            function(response){
+                $scope.message = "Error: "+response.status + " " + response.statusText;
+            });
+
+         $scope.searchTxt = '';
+    };
+
 }]);
