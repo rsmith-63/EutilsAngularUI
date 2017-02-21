@@ -8,7 +8,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi
     searchNcbi.getDataBases().query(function(response){
             response.unshift("All DataBases");
             $scope.dataBases = response;
-            $scope.defaultSelect = response[0];
+            $scope.slectedDB = response[0];
         },
         function(response){
             $scope.message = "Error: "+response.status + " " + response.statusText;
