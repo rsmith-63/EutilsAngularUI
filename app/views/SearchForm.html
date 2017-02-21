@@ -7,10 +7,13 @@
             <legend>NcbiSearch</legend>
 
             <div class="form-group">
-                <div class="col-lg-3 col-md-4 col-xs-4">
-                   <select id="selectbasic" name="selectbasic" class="form-control" ng-model="selectedDb"
-                           ng-options="item for item in dataBases">
+                <div class="col-lg-3 col-md-4 col-xs-4" ng-init="selectedDb[0]">
+                  <select id="selectbasic" name="selectbasic" class="form-control"  ng-model="defaultSelect"
+                           ng-options="o for o in dataBases track by o"  >
                     </select>
+
+
+
                 </div>
                 <div class="col-lg-3 col-md-4 col-xs-4">
                     <input id="Seach" name="Seach" type="text" placeholder="Search Ncbi" class="form-control input-md"  ng-model="searchTxt" >
