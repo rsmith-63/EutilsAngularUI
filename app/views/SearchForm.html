@@ -8,18 +8,15 @@
 
             <div class="form-group">
                 <div class="col-lg-3 col-md-4 col-xs-4" ng-init="selectedDb[0]">
-                  <select id="selectbasic" name="selectbasic" class="form-control"  ng-model="defaultSelect"
+                  <select id="selectbasic" name="selectbasic" class="form-control"  ng-model="::slectedDB"
                            ng-options="o for o in dataBases track by o"  >
                     </select>
-
-
-
                 </div>
                 <div class="col-lg-3 col-md-4 col-xs-4">
                     <input id="Seach" name="Seach" type="text" placeholder="Search Ncbi" class="form-control input-md"  ng-model="searchTxt" >
                 </div>
                 <div class="col-lg-3 col-md-4 col-xs-4">
-                    <button id="SearchButton" name="SearchButton" class="btn btn-primary" ng-click="searchDb(searchTxt)">Search</button>
+                    <button id="SearchButton" name="SearchButton" class="btn btn-primary" ng-click="searchDb(searchTxt,slectedDB)">Search</button>
                 </div>
             </div>
         </fieldset>
