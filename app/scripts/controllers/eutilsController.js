@@ -13,8 +13,8 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi
         function(response){
             $scope.message = "Error: "+response.status + " " + response.statusText;
         });
-    $scope.searchDb = function(txt) {
-         console.log(txt);
+    $scope.searchDb = function(txt,slectedDB) {
+         console.log(slectedDB);
         queryResults.getQueryResults(txt).query(function(response){
                 console.log(response);
             },
