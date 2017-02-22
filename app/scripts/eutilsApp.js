@@ -8,13 +8,20 @@ angular.module('eutilsUI', ['ui.router', 'ngResource'])
         $stateProvider
         // route for the home page
             .state('app', {
-                url:'/',
+                url: '/',
                 views: {
 
                     'content': {
-                        templateUrl : 'views/SearchForm.html',
-                        controller  : 'searchController'
+                        templateUrl: 'views/SearchForm.html',
+                        controller: 'searchController',
+                        resolve:{
+
+                            dataBases: ["NcbiResources", function (NcbiResources) {
+                                return NcbiResources.getDbList().$promise.catch(() => []);
+                            }]
+                        }
                     }
+
                 }
             });
         $urlRouterProvider.otherwise('/');

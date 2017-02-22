@@ -4,14 +4,21 @@
 'use strict';
 
 angular.module('eutilsUI')
-.service('searchNcbi',['$resource', 'baseURL', function($resource, baseURL) {
-    this.getDataBases = function(){
-        return $resource(`${baseURL}/dblist`);
-    };
-
-}]).service('queryResults',['$resource', 'baseURL', function($resource, baseURL) {
+.service('queryResults',['$resource', 'baseURL', function($resource, baseURL) {
     this.getQueryResults = function(term){
         return $resource(`${baseURL}/query?${term}`);
     };
 
+}]).factory('NcbiResources',['$resource','baseURL', function ($resource,baseURL) {
+    let NcbiResources = $resource(`${baseURL}`, {
+    }, {
+        getDbList: {
+            method: "GET",
+            url: `${baseURL}/dblist`,
+            isArray: true,
+        },
+
+
+    });
+    return NcbiResources;
 }]);

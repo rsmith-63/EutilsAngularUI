@@ -3,16 +3,13 @@
  */
 'use strict';
 
-angular.module('eutilsUI').controller('searchController', ['$scope', 'searchNcbi', 'queryResults', function($scope, searchNcbi,queryResults) {
+angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults', function($scope, dataBases, queryResults) {
 
-    searchNcbi.getDataBases().query(function(response){
-            response.unshift("All DataBases");
-            $scope.dataBases = response;
-            $scope.slectedDB = response[0];
-        },
-        function(response){
-            $scope.message = "Error: "+response.status + " " + response.statusText;
-        });
+    dataBases.unshift("All DataBases");
+    $scope.dataBases = dataBases;
+    $scope.slectedDB = dataBases[0];
+
+
     $scope.searchDb = function(txt,slectedDB) {
          console.log(slectedDB);
         queryResults.getQueryResults(txt).query(function(response){
