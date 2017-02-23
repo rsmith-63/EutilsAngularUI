@@ -11,17 +11,20 @@ angular.module('eutilsUI', ['ui.router', 'ngResource'])
                 url: '/',
                 views: {
 
-                    'content': {
+                    'header': {
                         templateUrl: 'views/SearchForm.html',
                         controller: 'searchController',
-                        resolve:{
+                        resolve: {
 
                             dataBases: ["NcbiResources", function (NcbiResources) {
                                 return NcbiResources.getDbList().$promise.catch(() => []);
                             }]
                         }
-                    }
 
+                    },
+                    'content': {
+                        templateUrl: 'views/info.html'
+                    }
                 }
             });
         $urlRouterProvider.otherwise('/');
