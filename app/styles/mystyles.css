@@ -29,5 +29,63 @@ h1 small {
     right: 0;
     margin: auto;
 }
+.category {
+    text-align: center;
+    font-size: 1.5em;
+}
 
 
+
+
+.row-divided > .vertical-divider {
+    height: calc(50% - 1rem);
+}
+
+.vertical-divider:before {
+    top: -100%;
+}
+
+.vertical-divider:after {
+    top: auto;
+    bottom: 0;
+}
+
+.row-divided {
+    position:relative;
+}
+
+.row-divided > [class^="col-"],
+.row-divided > [class*=" col-"] {
+    padding-left: 30px;  /* gutter width (give a little extra room) 2x default */
+    padding-right: 30px; /* gutter width (give a little extra room) 2x default */
+}
+
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #333;
+}
+
+/* just to set different column heights - not needed to function */
+
+@media ( min-width: 768px ) {
+    .grid-divider {
+        position: relative;
+        padding: 0;
+    }
+    .grid-divider>[class*='col-'] {
+        position: static;
+    }
+    .grid-divider>[class*='col-']:nth-child(n+2):before {
+        content: "";
+        border-left: 1px solid #DDD;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+    .col-padding {
+        padding: 0 15px;
+    }
+}
