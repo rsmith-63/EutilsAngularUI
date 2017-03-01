@@ -5,8 +5,8 @@
 
 angular.module('eutilsUI')
 .service('queryResults',['$resource', 'baseURL', function($resource, baseURL) {
-    this.getQueryResults = function(term){
-        return $resource(`${baseURL}/query?${term}`);
+    this.getQueryResults = function(term,db){
+        return $resource(`${baseURL}/query?term=${term}&db=${db}`);
     };
 
 }]).factory('NcbiResources',['$resource','baseURL', function ($resource,baseURL) {
