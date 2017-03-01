@@ -11,8 +11,8 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
 
 
     $scope.searchDb = function(txt,slectedDB) {
-         console.log(slectedDB);
-        queryResults.getQueryResults(txt).query(function(response){
+
+        queryResults.getQueryResults(txt,slectedDB).query(function(response){
                 console.log(response);
             },
             function(response){
@@ -22,4 +22,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
          $scope.searchTxt = '';
     };
 
-}]);
+}])
+    .controller('resultsController', ['$scope', function ($scope) {
+          console.log('resultsController', $scope);
+    }]);
