@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults', function($scope, dataBases, queryResults) {
+angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults' ,'$state', function($scope, dataBases, queryResults,$state) {
 
     dataBases.unshift("All DataBases");
     $scope.dataBases = dataBases;
@@ -20,6 +20,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
             });
 
          $scope.searchTxt = '';
+         $state.go('app.results');
     };
 
 }])

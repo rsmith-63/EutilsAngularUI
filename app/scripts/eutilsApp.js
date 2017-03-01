@@ -28,19 +28,14 @@ angular.module('eutilsUI', ['ui.router', 'ngResource'])
                 }
             })
             .state('app.results', {
-                url: 'results',
+                url:'results',
                 views: {
-
-                    'header': {
-                        templateUrl: 'views/SearchForm.html',
-                        controller: 'searchController'
-
-                    },
-                    'content': {
-                        templateUrl: 'views/Results',
-                        controller: 'resultsController'
+                    'content@': {
+                        templateUrl : 'views/Results.html',
+                        controller  : 'resultsController'
                     }
                 }
             });
+
         $urlRouterProvider.otherwise('/');
     });
