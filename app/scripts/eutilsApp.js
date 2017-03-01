@@ -26,6 +26,21 @@ angular.module('eutilsUI', ['ui.router', 'ngResource'])
                         templateUrl: 'views/info.html'
                     }
                 }
+            })
+            .state('app.results', {
+                url: 'results',
+                views: {
+
+                    'header': {
+                        templateUrl: 'views/SearchForm.html',
+                        controller: 'searchController'
+
+                    },
+                    'content': {
+                        templateUrl: 'views/Results',
+                        controller: 'resultsController'
+                    }
+                }
             });
         $urlRouterProvider.otherwise('/');
     });
