@@ -14,7 +14,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
     $scope.searchDb = function(txt,slectedDB) {
 
         queryResults.getQueryResults(txt,slectedDB).query(function(response){
-                localStorageService.set('eutilsUI',response);
+                localStorageService.set('searchResults',response);
                 $state.go('app.results');
             },
             function(response){

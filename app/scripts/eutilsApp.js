@@ -36,7 +36,7 @@ angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
                         resolve: {
 
                             searchResults: ["localStorageService", function (localStorageService) {
-                                return localStorageService.get('eutilsUI')
+                                return localStorageService.get('searchResults')
                             }]
                         }
                     }
