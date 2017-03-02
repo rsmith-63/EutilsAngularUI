@@ -46,6 +46,7 @@ angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
         $urlRouterProvider.otherwise('/');
     })
     .config(function(localStorageServiceProvider){
-        localStorageServiceProvider.setPrefix('eutilsUI');
+        localStorageServiceProvider.setPrefix('eutilsUI')
+            .setNotify(false, false);
 
     });

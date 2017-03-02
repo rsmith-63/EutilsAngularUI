@@ -3,30 +3,40 @@
  */
 'use strict';
 
-angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults' ,'$state',
-    'localStorageService', function($scope, dataBases, queryResults,$state,localStorageService) {
+angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults'
+    , '$state',
+    'localStorageService', '$rootScope', function ($scope, dataBases, queryResults, $state, localStorageService, $rootScope) {
 
-    dataBases.unshift("All DataBases");
-    $scope.dataBases = dataBases;
-    $scope.slectedDB = dataBases[0];
+        dataBases.unshift("All DataBases");
+        $scope.dataBases = dataBases;
+        $scope.slectedDB = dataBases[0];
 
 
-    $scope.searchDb = function(txt,slectedDB) {
+        $scope.searchDb = function (txt, slectedDB) {
 
-        queryResults.getQueryResults(txt,slectedDB).query(function(response){
-                localStorageService.set('searchResults',response);
-                $state.go('app.results');
-            },
-            function(response){
-                $scope.message = "Error: "+response.status + " " + response.statusText;
-            });
+            queryResults.getQueryResults(txt, slectedDB).query(function (response) {
+                    localStorageService.set('searchResults', response);
 
-         $scope.searchTxt = '';
+                    $state.go('app.results');
 
-    };
+                    $rootScope.$broadcast('searchResultsBroadcast', {'updated': true})
+                },
+                function (response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                });
 
-}])
-    .controller('resultsController', ['$scope','searchResults', function ($scope,searchResults) {
-          console.log('resultsController', $scope);
+            $scope.searchTxt = '';
+
+        };
+
+    }])
+    .controller('resultsController', ['$scope', 'searchResults', 'localStorageService', function ($scope, searchResults, localStorageService) {
+        console.log('resultsController', $scope);
         console.log('resultsController searchResults', searchResults);
+
+        $scope.$on('searchResultsBroadcast', (data) => {
+            $scope.searchResults = localStorageService.get('searchResults');
+            console.log('data', data);
+            console.log('searchResultsBroadcast $scope.searchResults', $scope.searchResults);
+        });
     }]);
