@@ -14,7 +14,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
 
         $scope.searchDb = function (txt, slectedDB) {
 
-            queryResults.getQueryResults(txt, slectedDB).query(function (response) {
+            queryResults.getQueryResults(txt, slectedDB).get(function (response) {
                     localStorageService.set('searchResults', response);
 
                     $state.go('app.results');
@@ -31,7 +31,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
 
     }])
     .controller('resultsController', ['$scope', 'searchResults', 'localStorageService', function ($scope, searchResults, localStorageService) {
-        console.log('resultsController', $scope);
+        $scope.searchResults = searchResults;
         console.log('resultsController searchResults', searchResults);
 
         $scope.$on('searchResultsBroadcast', (data) => {
