@@ -1,6 +1,6 @@
 <div class="container">
     <div class="page-header">
-        <h3>Results found in {{searchResults.totalFound}} databases for {{searchResults.searchTerm}}</h3>
+        <h3>Results found in {{searchResults.totalFound}} databases for {{searchResults.searchTerm}}  in {{searchResults.selectedDB}} </h3>
     </div>
     <div class="row grid-divider">
         <section class="col-sm-6" ng-repeat="searchResult in searchResults.categories"  ng-if="$index % 2 == 0">
