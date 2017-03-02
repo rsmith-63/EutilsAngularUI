@@ -2,7 +2,7 @@
  * Created by rob on 2/16/2017.
  */
 'use strict';
-angular.module('eutilsUI', ['ui.router', 'ngResource'])
+angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
     .constant("baseURL","http://localhost:4000/api")
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -38,4 +38,8 @@ angular.module('eutilsUI', ['ui.router', 'ngResource'])
             });
 
         $urlRouterProvider.otherwise('/');
+    })
+    .config(function(localStorageServiceProvider){
+        localStorageServiceProvider.setPrefix('eutilsUI');
+
     });

@@ -3,7 +3,8 @@
  */
 'use strict';
 
-angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults' ,'$state', function($scope, dataBases, queryResults,$state) {
+angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults' ,'$state',
+    'localStorageService', function($scope, dataBases, queryResults,$state,localStorageService) {
 
     dataBases.unshift("All DataBases");
     $scope.dataBases = dataBases;
@@ -13,7 +14,7 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
     $scope.searchDb = function(txt,slectedDB) {
 
         queryResults.getQueryResults(txt,slectedDB).query(function(response){
-                console.log(response);
+                localStorageService.set('eutilsUI',response);
             },
             function(response){
                 $scope.message = "Error: "+response.status + " " + response.statusText;
