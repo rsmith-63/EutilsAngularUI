@@ -32,7 +32,13 @@ angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
                 views: {
                     'content@': {
                         templateUrl : 'views/Results.html',
-                        controller  : 'resultsController'
+                        controller  : 'resultsController',
+                        resolve: {
+
+                            searchResults: ["localStorageService", function (localStorageService) {
+                                return localStorageService.get('eutilsUI')
+                            }]
+                        }
                     }
                 }
             });

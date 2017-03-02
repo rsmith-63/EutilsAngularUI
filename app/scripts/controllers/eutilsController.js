@@ -15,16 +15,18 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
 
         queryResults.getQueryResults(txt,slectedDB).query(function(response){
                 localStorageService.set('eutilsUI',response);
+                $state.go('app.results');
             },
             function(response){
                 $scope.message = "Error: "+response.status + " " + response.statusText;
             });
 
          $scope.searchTxt = '';
-         $state.go('app.results');
+
     };
 
 }])
-    .controller('resultsController', ['$scope', function ($scope) {
+    .controller('resultsController', ['$scope','searchResults', function ($scope,searchResults) {
           console.log('resultsController', $scope);
+        console.log('resultsController searchResults', searchResults);
     }]);
