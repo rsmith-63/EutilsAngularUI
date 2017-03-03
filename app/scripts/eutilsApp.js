@@ -41,6 +41,25 @@ angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
                         }
                     }
                 }
+            })
+            .state('app.listDetails', {
+                url:'^listDetails',
+                params: {
+                    term: null,
+                    db:null
+                },
+                views: {
+                    'content@': {
+                        templateUrl : 'views/info.html',
+                        controller  : 'detailsController',
+                        resolve: {
+
+                            detailResults: ["$stateParams", function ($stateParams) {
+                                return $stateParams;
+                            }]
+                        }
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/');

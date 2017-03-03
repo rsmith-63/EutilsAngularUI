@@ -9,7 +9,8 @@
             </div>
             <hr>
             <div class="col-padding" ng-repeat="db in searchResult.databases">
-                <p>{{db.MenuName}} count {{db.Count}}</p>
+                <a ui-sref="app.listDetails({ term:(searchResults.searchTerm), db:(db.DbName) })">{{db.MenuName}}</a>
+                <span> count {{db.Count}}</span>
             </div>
         </section>
         <section class="col-sm-6" ng-repeat="searchResult in searchResults.categories" ng-if="$index % 2 != 0   " >
@@ -17,7 +18,8 @@
                 {{searchResult.category}}</div>
             <hr>
             <div class="col-padding" ng-repeat="db in searchResult.databases">
-                <p>{{db.MenuName}} count {{db.Count}}</p>
+                <a ui-sref="app.listDetails({ term:(searchResults.searchTerm), db:(db.DbName) })">{{db.MenuName}}</a>
+                <span> count {{db.Count}}</span>
             </div>
         </section>
     </div>

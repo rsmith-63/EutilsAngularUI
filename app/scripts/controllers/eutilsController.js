@@ -3,7 +3,8 @@
  */
 'use strict';
 
-angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases', 'queryResults'
+angular.module('eutilsUI')
+    .controller('searchController', ['$scope', 'dataBases', 'queryResults'
     , '$state',
     'localStorageService', '$rootScope', function ($scope, dataBases, queryResults, $state, localStorageService, $rootScope) {
 
@@ -39,4 +40,11 @@ angular.module('eutilsUI').controller('searchController', ['$scope', 'dataBases'
             console.log('data', data);
             console.log('searchResultsBroadcast $scope.searchResults', $scope.searchResults);
         });
-    }]);
+    }])
+    .controller('detailsController', ['$scope', 'detailResults',
+        function ($scope, detailResults) {
+    $scope.detailResults = detailResults;
+    console.log('detailsController detailResults', detailResults);
+}]);
+
+    
