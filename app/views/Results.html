@@ -1,12 +1,13 @@
 <div class="container">
     <div class="page-header">
-        <h3>Results found in {{searchResults.totalFound}} databases for {{searchResults.searchTerm}}  in {{searchResults.selectedDB}} </h3>
+        <h3 tabindex="0">Results found in {{searchResults.totalFound}} databases for {{searchResults.searchTerm}}  in {{searchResults.selectedDB}}
+        </h3>
     </div>
     <div class="row grid-divider">
         <section class="col-sm-6" ng-repeat="searchResult in searchResults.categories"  ng-if="$index % 2 == 0">
-            <div class="category">
+            <h4 class="category" tabindex="0">
                 {{searchResult.category}}
-            </div>
+            </h4>
             <hr>
             <div class="col-padding" ng-repeat="db in searchResult.databases">
                 <a ui-sref="app.listDetails({ term:(searchResults.searchTerm), db:(db.DbName) })">{{db.MenuName}}</a>
@@ -14,8 +15,9 @@
             </div>
         </section>
         <section class="col-sm-6" ng-repeat="searchResult in searchResults.categories" ng-if="$index % 2 != 0   " >
-            <div class="category" >
-                {{searchResult.category}}</div>
+            <h4 class="category" tabindex="0">
+                {{searchResult.category}}
+            </h4>
             <hr>
             <div class="col-padding" ng-repeat="db in searchResult.databases">
                 <a ui-sref="app.listDetails({ term:(searchResults.searchTerm), db:(db.DbName) })">{{db.MenuName}}</a>
