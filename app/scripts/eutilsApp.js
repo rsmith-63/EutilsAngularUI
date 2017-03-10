@@ -12,7 +12,7 @@ angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
                 views: {
 
                     'header': {
-                        templateUrl: 'views/SearchForm.html',
+                        templateUrl: 'views/main.html',
                         controller: 'searchController',
                         resolve: {
 
@@ -21,10 +21,8 @@ angular.module('eutilsUI', ['ui.router', 'ngResource' ,'LocalStorageModule'])
                             }]
                         }
 
-                    },
-                    'content': {
-                        templateUrl: 'views/info.html'
                     }
+
                 }
             })
             .state('app.results', {
