@@ -6,6 +6,6 @@ angular.module('eutilsUI')
     .config(otherwiseConfigBlock);
 otherwiseConfigBlock.$inject = ['$urlServiceProvider' ];
 function otherwiseConfigBlock($urlServiceProvider) { //userlist search
-    $urlServiceProvider.rules.otherwise({ state: 'search' });
+    $urlServiceProvider.rules.otherwise({ state: 'app' });
 
 }

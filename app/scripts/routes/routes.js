@@ -3,7 +3,7 @@ angular.module('eutilsUI')
 RoutesConfig.$inject = ['$stateProvider' ];
 function RoutesConfig($stateProvider) { //$urlServiceProvider
 
-    $stateProvider.state('search', {
+    $stateProvider.state('app', {
         url: '/',
         views: {
             'header': {
@@ -30,15 +30,17 @@ function RoutesConfig($stateProvider) { //$urlServiceProvider
         url:'results',
         views: {
             'content@': {
-                templateUrl : 'views/Results.html',
-                controller  : 'resultsController',
-                resolve: {
-
-                    searchResults: ["localStorageService", function (localStorageService) {
-                        return localStorageService.get('searchResults')
-                    }]
+                component  : 'resultsComponent',
+                bindings: {
+                    searchResults: 'searchResults'
                 }
             }
+        },
+        resolve: {
+
+            searchResults: ["localStorageService", function (localStorageService) {
+                return localStorageService.get('searchResults')
+            }]
         }
     });
 

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="page-header">
+        <h3 tabindex="0">Results found in {{$ctrl.searchResults.totalFound}} databases for {{$ctrl.searchResults.searchTerm}}  in {{$ctrl.searchResults.selectedDB}}
+        </h3>
+    </div>
+    <div class="row grid-divider">
+        <section class="col-sm-6" ng-repeat="searchResult in $ctrl.searchResults.categories"  ng-if="$index % 2 == 0">
+            <h4 class="category" tabindex="0">
+                {{searchResult.category}}
+            </h4>
+            <hr>
+            <div class="col-padding" ng-repeat="db in searchResult.databases">
+                <a ui-sref="app.listDetails({ term:($ctrl.searchResults.searchTerm), db:(db.DbName) })">{{db.MenuName}}</a>
+                <span> count {{db.Count}}</span>
+            </div>
+        </section>
+        <section class="col-sm-6" ng-repeat="searchResult in $ctrl.searchResults.categories" ng-if="$index % 2 != 0   " >
+            <h4 class="category" tabindex="0">
+                {{searchResult.category}}
+            </h4>
+            <hr>
+            <div class="col-padding" ng-repeat="db in searchResult.databases">
+                <a ui-sref="app.listDetails({ term:($ctrl.searchResults.searchTerm), db:(db.DbName) })">{{db.MenuName}}</a>
+                <span> count {{db.Count}}</span>
+            </div>
+        </section>
+    </div>
+</div>
