@@ -52,17 +52,20 @@ function RoutesConfig($stateProvider) { //$urlServiceProvider
         },
         views: {
             'content@': {
-                templateUrl : 'views/info.html',
-                controller  : 'detailsController',
-                resolve: {
-
-                    detailResults: ["$stateParams", function ($stateParams) {
-                        return $stateParams;
-                    }]
+                component : 'detailComponent',
+                bindings: {
+                    detailResults: 'detailResults'
                 }
+
             }
-        }
-    });
+        },
+        resolve: {
+
+            detailResults: ["$stateParams", function ($stateParams) {
+                return $stateParams;
+            }]
+
+    }});
 
 }
 
